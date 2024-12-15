@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Welcome to my place. {{ user.username }}</h1>
+    {% if user is not none %}
+    	<a href="{% url 'logout' %}">đăng xuất</a>
+        <a href="{% url 'resetPass' %}">Đổi mật khẩu</a>
+    {% endif %}
+</body>
+</html>

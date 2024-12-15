@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block head %}
+    <title>Contact | Flight</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
+{% endblock head %}
+
+{% block body %}
+    <section class="section section1" style="background: url({% static 'img/contactbg.svg' %}) no-repeat top center; background-size: cover;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 top-left-section">
+                    <div class="section-heading">
+                        <h1>Get in touch with us</h1>
+                        <div class="line-dec"></div>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <a href="mailto:shop.ayush930@gmail.com">
+                                <img src="{% static 'img/email-icon.svg' %}" alt="email" width="52" height="40">
+                            </a>
+                            <a href="mailto:shop.ayush930@gmail.com" class="contact-text">shop.ayush930@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <a href="tel:(215)%20979-8030">
+                                <img src="{% static 'img/phone-icon.svg' %}" alt="phone" width="52" height="40">
+                            </a>
+                            <a href="tel:(215)%20979-8030" class="contact-text">(215) 979-XXXX</a>
+                        </div>
+                        <div class="contact-item">
+                            <a href="https://g.page/DSCENGG?share" target="_blank">
+                                <img src="{% static 'img/location-icon.svg' %}" alt="address" width="50" height="50">
+                            </a>
+                            <a href="https://g.page/DSCENGG?share" class="contact-text">DSCE, Bangalore, India - 560078</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 contact-form-box">
+                    <div class="section-heading">
+                        <form id="ContactUs100" method="post" onsubmit="return ValidateForm(this);">
+                            {% csrf_token %}
+                            <script type="text/javascript">
+                                function ValidateForm(frm) {
+                                    if (frm.Name.value == "") { alert('Name is required.'); frm.Name.focus(); return false; }
+                                    if (frm.FromEmailAddress.value == "") { alert('Email address is required.'); frm.FromEmailAddress.focus(); return false; }
+                                    if (frm.FromEmailAddress.value.indexOf("@") < 1 || frm.FromEmailAddress.value.indexOf(".") < 1) { alert('Please enter a valid email address.'); frm.FromEmailAddress.focus(); return false; }
+                                    if (frm.Comments.value == "") { alert('Please enter comments or questions.'); frm.Comments.focus(); return false; }
+                                    alert('Thank you for contacting us. We will get back to you as soon as possible.');
+                                    return true;
+                                }
+                            </script>
+                            <table style="width:100%;max-width:550px;border:0;" cellpadding="8" cellspacing="0">
+                                <tr>
+                                    <td><label for="Name">Name:</label></td>
+                                    <td><input name="Name" type="text" maxlength="60" placeholder="John Doe" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="PhoneNumber">Phone:</label></td>
+                                    <td><input name="PhoneNumber" type="tel" maxlength="15" placeholder="+91 9999988888" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="FromEmailAddress">Email:</label></td>
+                                    <td><input name="FromEmailAddress" type="email" maxlength="90" placeholder="john@gmail.com" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="Comments">Message:</label></td>
+                                    <td><textarea name="Comments" rows="7" placeholder="Enter your message here..." required></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button class="btn btn-danger" type="submit">Send Message</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
