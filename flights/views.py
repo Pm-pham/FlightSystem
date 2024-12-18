@@ -32,7 +32,6 @@ def flight(request):
     destination = Place.objects.get(code=d_place.upper())
     origin = Place.objects.get(code=o_place.upper())
     if seat == 'economy':
-
         flights = Flight.objects.filter(depart_day=flightday, origin=1, destination=2).exclude(
             economy_fare=0).order_by('economy_fare')
         try:

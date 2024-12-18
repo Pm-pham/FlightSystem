@@ -72,7 +72,7 @@
                                 <div class="ticket-action-div">
                                     {% if ticket.status == 'CONFIRMED' %}
                                         <!--<button class="btn btn-outline-primary btnp">Print Ticket</button>-->
-                                        <form action="cancelticket" method="POST" target="_blank">
+                                        <form action="{% url 'cancelTicket' %}" method="POST" target="_blank">
                                             <input type="hidden" name="ref" value="{{ticket.ref_no}}">
                                             <button type="submit" class="btn btn-outline-info btnp pbtn">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
@@ -84,7 +84,7 @@
                                         <button class="btn btn-outline-danger btnp cbtn"  data-ref="{{ticket.ref_no}}" onclick="popup(this)">Cancel</button>
                                     {% endif %}
                                     {% if ticket.status == 'PENDING' %}
-                                        <form action="{% url 'resumebooking' %}" method="POST">
+                                        <form action="{% url 'resumeBooking' %}" method="POST">
                                             {% csrf_token %}
                                             <input type="hidden" name="ref" value="{{ticket.ref_no}}">
                                             <button type="submit" class="btn btn-outline-primary btnp rbtn">
@@ -93,7 +93,6 @@
                                                   </svg>
                                             </button>
                                         </form>
-
                                         <button type="button" class="btn btn-outline-danger btnp cbtn" data-ref="{{ticket.ref_no}}" onclick="popup(this)">Cancel</button>
                                     {% endif %}
                                     {% if ticket.status == 'CANCELLED' %}
@@ -169,4 +168,5 @@ function cancel_tkt() {
     });
 }
 </script>
+
 {% endblock %}

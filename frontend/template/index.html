@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class="input-row">
-                            <label for="flight_to">To: </label>
+                            <label for="flight-to">To: </label>
                             <input type="text" name="Destination" placeholder="To" id="flight-to" class="form-control mr-sm-3" onblur="hideplaces(this)" data-value="{{destination | lower}}" data-list="places_to" autocomplete="off" value="{{destination | upper}}">
                             <div id="places_to" class="places_box">
                                 <div class="each_places_to_list places__list" data-value="del" onclick="selectplace(this)">Delhi (India)</div>
@@ -155,4 +155,5 @@
             </div>
         </div>
     </section>
+
 {% endblock%}
